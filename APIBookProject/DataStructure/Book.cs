@@ -11,5 +11,7 @@ namespace DataStructure
         public virtual Author Author { get; set; }
 
         public virtual Genre Genre { get; set; }
+
+        public virtual List<BookLanguage> BookLanguages { get; set; }
     }
 }

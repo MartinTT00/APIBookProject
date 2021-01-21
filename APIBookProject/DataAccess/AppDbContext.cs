@@ -16,6 +16,7 @@ namespace DataAccess
         public DbSet<Book> Books { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<BookLanguage> BookLanguages { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,6 +32,19 @@ namespace DataAccess
                 .HasOne(x => x.Genre)
                 .WithMany(x => x.AuthorGenres)
                 .HasForeignKey(x => x.GenreID);
+
+
+
+            modelBuilder.Entity<BookLanguage>()
+               .HasKey(x => new { x.BookID, x.LanguageID });
+            modelBuilder.Entity<BookLanguage>()
+                .HasOne(x => x.Book)
+                .WithMany(x => x.BookLanguages)
+                .HasForeignKey(x => x.BookID);
+            modelBuilder.Entity<BookLanguage>()
+                .HasOne(x => x.Language)
+                .WithMany(x => x.BookLanguages)
+                .HasForeignKey(x => x.LanguageID);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

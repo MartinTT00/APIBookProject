@@ -6,6 +6,6 @@ namespace DataStructure
 {
     public class Language:BaseModel
     {
-
+        public virtual List<BookLanguage> BookLanguages { get; set; }
     }
 }
