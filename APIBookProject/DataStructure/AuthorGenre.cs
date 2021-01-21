@@ -4,12 +4,11 @@ using System.Text;
 
 namespace DataStructure
 {
-    public class Book : BaseModel
+    public class AuthorGenre
     {
-        public int YearOfPublishment { get; set; }
-
+        public int AuthorID { get; set; }
         public virtual Author Author { get; set; }
-
+        public int GenreID { get; set; }
         public virtual Genre Genre { get; set; }
     }
 }

@@ -6,6 +6,7 @@ namespace DataStructure
 {
      public class Genre:BaseModel
     {
-        public List<Book> Books { get; set; }
+        public virtual List<Book> Books { get; set; }
+        public virtual List<AuthorGenre> AuthorGenres { get; set; }
     }
 }

@@ -9,7 +9,9 @@ namespace DataStructure
         public int Age { get; set; }
         public int CountOfBooks { get; set; }
 
-        public List<Book> Books { get; set; }
+        public virtual List<Book> Books { get; set; }
+
+        public virtual List<AuthorGenre> AuthorGenres { get; set; }
 
     }
 }

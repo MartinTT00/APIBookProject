@@ -6,5 +6,6 @@ namespace DataStructure
 {
     public class Language:BaseModel
     {
+
     }
 }
