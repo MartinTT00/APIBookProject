@@ -9,5 +9,7 @@ namespace DataStructure
         public int Age { get; set; }
         public int CountOfBooks { get; set; }
 
+        public List<Book> Books { get; set; }
+
     }
 }

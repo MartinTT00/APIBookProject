@@ -6,6 +6,6 @@ namespace DataStructure
 {
      public class Genre:BaseModel
     {
-
+        public List<Book> Books { get; set; }
     }
 }
