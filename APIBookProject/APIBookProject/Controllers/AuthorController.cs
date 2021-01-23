@@ -14,18 +14,54 @@ namespace APIBookProject.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        private AuthorRepository authorRepository;
-        public AuthorController(AuthorRepository authorRepository)
+        private readonly AppDbContext appDbContext;
+        public AuthorController(AppDbContext appDbContext)
         {
-           this.authorRepository = authorRepository;
+            this.appDbContext = appDbContext;
+        }
+
+        [HttpGet("{id}", Name = "GetAuthorById")]
+        public IActionResult GetByID(int id)
+        {
+        AuthorRepository authorRepository = new AuthorRepository(appDbContext);
+            Author author = new Author();
+            author = authorRepository.GetByID(id);
+            return Ok(author);
+        }
+
+        [HttpPost]
+        public IActionResult Post(Author author)
+        {
+            AuthorRepository authorRepository = new AuthorRepository(appDbContext);
+            Uri uri = new Uri(Url.Link("GetAuthorByID", new { Id = author.ID }));
+            author = authorRepository.PostAuthor(author);
+            return Created(uri, author);
         }
 
 
         [HttpGet]
         public IActionResult Get()
         {
+            AuthorRepository authorRepository = new AuthorRepository(appDbContext);
             List<Author> authors = authorRepository.GetAuthors();
             return Ok(authors);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Author author)
+        {
+            AuthorRepository authorRepository = new AuthorRepository(appDbContext);
+            author = authorRepository.GetByID(id);
+            authorRepository.PutAuthor(author);
+            return Ok(author);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            AuthorRepository authorRepository = new AuthorRepository(appDbContext);
+            authorRepository.DeleteAuthor(id);
+            return Ok(id);
+        }
+
     }
 }

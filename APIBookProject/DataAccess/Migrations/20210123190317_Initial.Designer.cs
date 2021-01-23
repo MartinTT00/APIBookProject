@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210121195431_AddedManyToManyRSbetweenBookAndLanguage")]
-    partial class AddedManyToManyRSbetweenBookAndLanguage
+    [Migration("20210123190317_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

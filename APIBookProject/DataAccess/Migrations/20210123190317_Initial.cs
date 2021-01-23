@@ -2,7 +2,7 @@
 
 namespace DataAccess.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -99,10 +99,39 @@ namespace DataAccess.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "BookLanguages",
+                columns: table => new
+                {
+                    BookID = table.Column<int>(nullable: false),
+                    LanguageID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookLanguages", x => new { x.BookID, x.LanguageID });
+                    table.ForeignKey(
+                        name: "FK_BookLanguages_Books_BookID",
+                        column: x => x.BookID,
+                        principalTable: "Books",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookLanguages_Languages_LanguageID",
+                        column: x => x.LanguageID,
+                        principalTable: "Languages",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AuthorGenres_GenreID",
                 table: "AuthorGenres",
                 column: "GenreID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookLanguages_LanguageID",
+                table: "BookLanguages",
+                column: "LanguageID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorID",
@@ -119,6 +148,9 @@ namespace DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AuthorGenres");
+
+            migrationBuilder.DropTable(
+                name: "BookLanguages");
 
             migrationBuilder.DropTable(
                 name: "Books");

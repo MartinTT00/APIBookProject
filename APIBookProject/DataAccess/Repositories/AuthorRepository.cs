@@ -8,7 +8,7 @@ namespace DataAccess.Repositories
 {
     public class AuthorRepository
     {
-        private AppDbContext appDbContext;
+        private readonly AppDbContext appDbContext;
         public AuthorRepository(AppDbContext appDbContext)
         {
             this.appDbContext = appDbContext;
@@ -45,10 +45,9 @@ namespace DataAccess.Repositories
 
 
 
-        public void PutAuthor(int id)
+        public void PutAuthor(Author author)
         {
-            Author author = new Author();
-            author = GetByID(id);
+            author = GetByID(author.ID);
             appDbContext.Authors.Update(author);
             Save();
         }
