@@ -23,7 +23,7 @@ namespace APIBookProject.Controllers
         [HttpGet("{id}", Name = "GetAuthorById")]
         public IActionResult GetByID(int id)
         {
-        AuthorRepository authorRepository = new AuthorRepository(appDbContext);
+            AuthorRepository authorRepository = new AuthorRepository(appDbContext);
             Author author = new Author();
             author = authorRepository.GetByID(id);
             return Ok(author);

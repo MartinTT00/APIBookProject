@@ -43,10 +43,9 @@ namespace DataAccess.Repositories
             return book;
         }
 
-        public void PutBook(int id)
+        public void PutBook(Book book)
         {
-            Book book = new Book();
-            book = GetByID(id);
+            book = GetByID(book.ID);
             appDbContext.Books.Update(book);
             Save();
         }
