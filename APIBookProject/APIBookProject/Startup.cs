@@ -55,6 +55,7 @@ namespace APIBookProject
             services.AddScoped<BookRepository>();
             services.AddScoped<GenreRepository>();
             services.AddScoped<LanguageRepository>();
+            services.AddScoped<LoginModelRepository>();
             services.AddCors();
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>

@@ -17,6 +17,7 @@ namespace DataAccess
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<BookLanguage> BookLanguages { get; set; }
+        public DbSet<LoginModel> LoginModels { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
