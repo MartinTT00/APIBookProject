@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DataAccess;
 using DataStructure;
 using DataAccess.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APIBookProject.Controllers
 {
@@ -40,6 +41,7 @@ namespace APIBookProject.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             AuthorRepository authorRepository = new AuthorRepository(appDbContext);

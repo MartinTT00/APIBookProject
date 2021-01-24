@@ -58,5 +58,4 @@ namespace APIBookProject.Controllers
                 return Ok(id);
             }
         }
-    }
 }
