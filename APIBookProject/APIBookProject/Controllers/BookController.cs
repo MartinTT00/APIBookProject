@@ -14,11 +14,7 @@ namespace APIBookProject.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        //private readonly AppDbContext appDbContext;
-        //public BookController(AppDbContext appDbContext)
-        //{
-        //    this.appDbContext = appDbContext;
-        //}
+
         private BookRepository bookRepository;
         public BookController(BookRepository bookRepository)
         {
@@ -36,7 +32,7 @@ namespace APIBookProject.Controllers
         [HttpPost]
         public IActionResult Post(Book book)
         {
-            Uri uri = new Uri(Url.Link("GetAuthorByID", new { Id = book.ID }));
+            Uri uri = new Uri(Url.Link("GetBookByID", new { Id = book.ID }));
             book = bookRepository.PostBook(book);
             return Created(uri, book);
         }

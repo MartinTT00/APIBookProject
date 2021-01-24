@@ -44,10 +44,9 @@ namespace DataAccess.Repositories
 
 
 
-        public void PutGenre(int id)
+        public void PutGenre(Genre genre)
         {
-            Genre genre = new Genre();
-            genre = GetByID(id);
+            genre = GetByID(genre.ID);
             appDbContext.Genres.Update(genre);
             Save();
         }

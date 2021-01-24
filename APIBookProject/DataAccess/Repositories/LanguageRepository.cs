@@ -44,10 +44,9 @@ namespace DataAccess.Repositories
             return language;
         }
 
-        public void PutLanguage(int id)
+        public void PutLanguage(Language language)
         {
-            Language language = new Language();
-            language = GetByID(id);
+            language = GetByID(language.ID);
             appDbContext.Languages.Update(language);
             Save();
         }
